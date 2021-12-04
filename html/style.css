@@ -1,0 +1,119 @@
+@font-face {
+    font-family: 'AmsiPro-Bold';
+    src: url('/html/fonts/AmsiPro-Black.otf');
+}
+
+@font-face {
+    font-family: 'AmsiProNarw-Regular';
+    src: url('/html/fonts/AmsiProNarw-Regular.otf');
+}
+
+* {
+    font-family: 'AmsiProNarw-Regular';
+    font-size: 14px;
+}
+
+.wrapper {
+    background: rgba(6,6,6,0.8);
+    width: 1000px;
+    margin: 0 auto;
+    /* height: 500px; */
+    border-radius: 30px;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    color: #fff;
+    padding: 10px;
+    margin-top: 229px;
+}
+
+.title {
+    font-size: 22px;
+    font-family: 'AmsiPro-Bold';
+    text-align: center;
+    color: rgb(171, 43, 43);
+}
+
+.vehicleList {
+    display: flex;
+    overflow: scroll;
+    flex-wrap: wrap;
+    max-height: 469px;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+.vehicleItem {
+    width: 22.2%;
+    background: rgba(14, 14, 14,0.7);
+    padding: 10px;
+    border-radius: 21px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.vehicleItemName {
+    font-size: 20px;
+    text-align: center;
+    color: rgb(171, 43, 43);
+}
+
+.vehicleItemPrice {
+    text-align: center;
+    color: #969696;
+}
+
+.vehicleItemButton {
+    margin-top: 10px;
+}
+
+.btn {
+    background: none;
+    border: none;
+    outline: 0;
+    color: #fff;
+}
+
+.btn-buy {
+    width: 100%;
+    background: rgb(171, 43, 43);
+    padding: 5px;
+    border-radius: 7px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-buy:hover {
+    color: rgb(171, 43, 43);
+    background: #fff;
+}
+
+img {
+    width: 222px;
+    height: 125px;
+    border-radius: 14px;
+}
+
+.vehicleItem:nth-child(4n+4) {
+    margin-right: 0;
+}
+
+.sortrow {
+    background: rgba(14, 14, 14,0.7);
+    padding: 10px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.sortrow > select {width: 30%;padding: 9px 5px;border-radius: 10px;border: 0;outline: 0;background: #1b1b1b;color: #fff;}
+
+.sortrow > input {
+    width: 30%;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    border: 0;
+    background: #1b1b1b;
+    color: #fff;
+}
