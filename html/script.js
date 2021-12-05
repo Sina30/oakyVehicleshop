@@ -12,7 +12,7 @@ window.addEventListener('message', function(event) {
                 <div class="vehicleItemName">${vehicles[i].name}</div>
                 <div class="vehicleItemPrice">${new Intl.NumberFormat("en-US", { type: "currency", currency: "USD" }).format(vehicles[i].price)}</div>
                 <div class="vehicleItemButton">
-                    <button class="btn btn-buy" id="buyVehicle" data-model="${vehicles[i].model}">Kaufen</button>
+                    <button class="btn btn-buy" id="buyVehicle" data-model="${vehicles[i].model}">Buy</button>
                 </div>
             </div>
             `)

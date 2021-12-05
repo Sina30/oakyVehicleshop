@@ -13,9 +13,9 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(10)
+        Citizen.Wait(0)
         local coords = GetEntityCoords(PlayerPedId())
-        for k, v in pairs(AcV.Locations) do
+        for k, v in pairs(Config.Locations) do
             local dist = #(coords - vector3(v.x, v.y, v.z))
             if dist < 1.9 then
                 currentShop = v
@@ -32,12 +32,11 @@ Citizen.CreateThread(function()
                 end
             end
         end
-        local dist = #(coords - AcV.VehicleSell.coords)
+        local dist = #(coords - Config.VehicleSell.coords)
         if dist < 3 then
             ESX.ShowHelpNotification('Press ~INPUT_PICKUP~ to sell your vehicle.')
             if IsControlJustPressed(0, 38) then
                 local vehicle = GetVehiclePedIsIn(PlayerPedId())
-                print(vehicle)
                 if vehicle ~= 0 then
                     local plate = GetVehicleNumberPlateText(vehicle)
                     TriggerServerEvent('atomic_vehicleshop:server:checkOwnerForSell', plate)
@@ -50,21 +49,21 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-    local model = 'cs_siemonyetarian'
-    RequestModel(GetHashKey(model))
-    local hash = GetHashKey(model)
-    
-    while not HasModelLoaded(GetHashKey(model)) do
-        Wait(1)
-    end
-    for _, item in pairs(AcV.Locations) do
+    for _, item in pairs(Config.Locations) do
+        local model = item.ped
+        RequestModel(GetHashKey(model))
+        local hash = GetHashKey(model)
+        
+        while not HasModelLoaded(GetHashKey(model)) do
+            Wait(1)
+        end
         local npc = CreatePed(4, hash, item.x, item.y, item.z, item.h, false, true)
         
         SetEntityHeading(npc, item.h)
         FreezeEntityPosition(npc, true)
         SetEntityInvincible(npc, true)
         SetBlockingOfNonTemporaryEvents(npc, true)
-
+        
         blip = AddBlipForCoord(item.x, item.y, item.z)
         SetBlipSprite(blip, item.blip.sprite)
         SetBlipDisplay(blip, 4)
@@ -75,8 +74,8 @@ Citizen.CreateThread(function()
         AddTextComponentString(item.blip.name)
         EndTextCommandSetBlipName(blip)
     end
-
-    blip = AddBlipForCoord(AcV.VehicleSell.coords)
+    
+    blip = AddBlipForCoord(Config.VehicleSell.coords)
     SetBlipSprite(blip, 225)
     SetBlipDisplay(blip, 4)
     SetBlipScale(blip, 0.8)
@@ -125,7 +124,7 @@ RegisterNetEvent('atomic_vehicleshop:client:deleteVehicle')
 AddEventHandler('atomic_vehicleshop:client:deleteVehicle', function()
     local ply = PlayerPedId()
     local vehicle = GetVehiclePedIsIn(ply)
-
+    
     if vehicle ~= 0 then
         ESX.Game.DeleteVehicle(vehicle)
     end
