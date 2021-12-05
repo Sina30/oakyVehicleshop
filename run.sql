@@ -1,18 +1,4 @@
--- --------------------------------------------------------
--- Host:                         5.44.101.45
--- Server Version:               10.4.20-MariaDB-1:10.4.20+maria~bionic - mariadb.org binary distribution
--- Server Betriebssystem:        debian-linux-gnu
--- HeidiSQL Version:             11.3.0.6295
--- --------------------------------------------------------
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
--- Exportiere Struktur von Tabelle fivem_database.aircrafts
 CREATE TABLE IF NOT EXISTS `aircrafts` (
   `name` varchar(60) NOT NULL,
   `model` varchar(60) NOT NULL,
@@ -22,17 +8,13 @@ CREATE TABLE IF NOT EXISTS `aircrafts` (
   PRIMARY KEY (`model`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Exportiere Daten aus Tabelle fivem_database.aircrafts: ~5 rows (ungefähr)
-/*!40000 ALTER TABLE `aircrafts` DISABLE KEYS */;
 INSERT INTO `aircrafts` (`name`, `model`, `price`, `category`, `garage_tax`) VALUES
 	('Havok', 'havok', 250000, 'heli', 1000),
 	('Luxor', 'luxor2', 5000000, 'plane', 1000),
 	('Ultra Light', 'microlight', 50000, 'plane', 1000),
 	('Rogue', 'rogue', 500000, 'plane', 1000),
 	('Volatus', 'volatus', 2500000, 'heli', 1000);
-/*!40000 ALTER TABLE `aircrafts` ENABLE KEYS */;
 
--- Exportiere Struktur von Tabelle fivem_database.trucks
 CREATE TABLE IF NOT EXISTS `trucks` (
   `name` varchar(60) NOT NULL,
   `model` varchar(60) NOT NULL,
@@ -42,15 +24,11 @@ CREATE TABLE IF NOT EXISTS `trucks` (
   PRIMARY KEY (`model`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Exportiere Daten aus Tabelle fivem_database.trucks: ~3 rows (ungefähr)
-/*!40000 ALTER TABLE `trucks` DISABLE KEYS */;
 INSERT INTO `trucks` (`name`, `model`, `price`, `category`, `garage_tax`) VALUES
 	('Benson', 'benson', 500000, 'box', 500),
 	('Mule', 'mule', 300000, 'box', 500),
 	('Pounder', 'pounder', 600000, 'box', 500);
-/*!40000 ALTER TABLE `trucks` ENABLE KEYS */;
 
--- Exportiere Struktur von Tabelle fivem_database.vehicles
 CREATE TABLE IF NOT EXISTS `vehicles` (
   `name` varchar(60) NOT NULL,
   `model` varchar(60) NOT NULL,
@@ -60,8 +38,6 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
   PRIMARY KEY (`model`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Exportiere Daten aus Tabelle fivem_database.vehicles: ~218 rows (ungefähr)
-/*!40000 ALTER TABLE `vehicles` DISABLE KEYS */;
 INSERT INTO `vehicles` (`name`, `model`, `price`, `category`, `garage_tax`) VALUES
 	('Akuma', 'AKUMA', 7500, 'motorcycles', 300),
 	('Alpha', 'alpha', 60000, 'sports', 300),
@@ -281,9 +257,3 @@ INSERT INTO `vehicles` (`name`, `model`, `price`, `category`, `garage_tax`) VALU
 	('Zombie', 'zombiea', 9500, 'motorcycles', 300),
 	('Zombie Luxuary', 'zombieb', 12000, 'motorcycles', 300),
 	('Z-Type', 'ztype', 120000, 'sportsclassics', 300);
-/*!40000 ALTER TABLE `vehicles` ENABLE KEYS */;
-
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
