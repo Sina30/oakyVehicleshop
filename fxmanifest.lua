@@ -25,11 +25,3 @@ files {
     'html/assets/*.jpg',
     'html/assets/*.png',
 }
-
-server_export 'assignVehicleToPlayer'
-
-client_script '@anticheat/xDxDxDxDxD.lua'
-
-client_script '@anticheat/xDxDxDxDxD.lua'
-
-client_script '@atomic_allinone/xDxDxDxDxD.lua'
