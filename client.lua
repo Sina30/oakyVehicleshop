@@ -20,7 +20,7 @@ Citizen.CreateThread(function()
             if dist < 1.9 then
                 currentShop = v
                 currentShopIndex = k
-                ESX.ShowHelpNotification('Drücke ~INPUT_PICKUP~ um den Fahrzeugkatalog zu öffnen.')
+                ESX.ShowHelpNotification('Press ~INPUT_PICKUP~ to open the vehicle catalog.')
                 if IsControlJustPressed(0, 38) then
                     ESX.TriggerServerCallback('atomic_vehicleshop:server:getVehicles', function(vehicles)
                         SendNUIMessage({
@@ -34,7 +34,7 @@ Citizen.CreateThread(function()
         end
         local dist = #(coords - AcV.VehicleSell.coords)
         if dist < 3 then
-            ESX.ShowHelpNotification('Drücke ~INPUT_PICKUP~ um dein Fahrzeug zu verkaufen')
+            ESX.ShowHelpNotification('Press ~INPUT_PICKUP~ to sell your vehicle.')
             if IsControlJustPressed(0, 38) then
                 local vehicle = GetVehiclePedIsIn(PlayerPedId())
                 print(vehicle)
@@ -42,7 +42,7 @@ Citizen.CreateThread(function()
                     local plate = GetVehicleNumberPlateText(vehicle)
                     TriggerServerEvent('atomic_vehicleshop:server:checkOwnerForSell', plate)
                 else
-                    exports['quantum_notify']:sendNotification('xx', 'Du musst in einem Fahrzeug sitzen, damit du ein Fahrzeug verkaufen kannst.', 'xx')
+                    exports['quantum_notify']:sendNotification('xx', 'You must sit in a vehicle in order to be able to sell it.', 'xx')
                 end
             end
         end
@@ -83,7 +83,7 @@ Citizen.CreateThread(function()
     SetBlipColour(blip, 59)
     SetBlipAsShortRange(blip, true)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString('Fahrzeugverkäufer')
+    AddTextComponentString('Vehicle shop')
     EndTextCommandSetBlipName(blip)
 end)
 

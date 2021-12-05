@@ -161,9 +161,11 @@ AddEventHandler('atomic_vehicleshop:server:buyVehicle', function(model)
                         xPlayer.removeMoney(tonumber(v.price))
                     end
                     TriggerClientEvent('atomic_vehicleshop:client:spawnVehicle', src, model, xPlayer.getIdentifier())
-                    TriggerClientEvent('quantum_notify:client:sendNotification', src, 'xx', 'Du hast das Fahrzeug erfolgreich gekauft.', 'xx')
+                    xPlayer.showNotification('Youve bought that vehicle.')
+                    -- TriggerClientEvent('quantum_notify:client:sendNotification', src, 'xx', 'Du hast das Fahrzeug erfolgreich gekauft.', 'xx')
                 else
-                    TriggerClientEvent('quantum_notify:client:sendNotification', src, 'xx', 'Du hast nicht genügend Geld dabei, um das Fahrzeug zu kaufen.', 'xx')
+                    xPlayer.showNotification('You do not have enough money to buy that vehicle.')
+                    -- TriggerClientEvent('quantum_notify:client:sendNotification', src, 'xx', 'Du hast nicht genügend Geld dabei, um das Fahrzeug zu kaufen.', 'xx')
                 end
             end
         end
@@ -182,9 +184,9 @@ AddEventHandler('atomic_vehicleshop:server:buyVehicle', function(model)
                             xPlayer.removeMoney(tonumber(v.price))
                         end
                         TriggerClientEvent('atomic_vehicleshop:client:spawnVehicle', src, model, xPlayer.getIdentifier())
-                        TriggerClientEvent('quantum_notify:client:sendNotification', src, 'xx', 'Du hast das Fahrzeug erfolgreich gekauft.', 'xx')
+                        xPlayer.showNotification('Youve bought that vehicle.')
                     else
-                        TriggerClientEvent('quantum_notify:client:sendNotification', src, 'xx', 'Du hast nicht genügend Geld dabei, um das Fahrzeug zu kaufen.', 'xx')
+                        xPlayer.showNotification('You do not have enough money to buy that vehicle.')
                     end
                 end
             end
@@ -204,9 +206,9 @@ AddEventHandler('atomic_vehicleshop:server:buyVehicle', function(model)
                             xPlayer.removeMoney(tonumber(v.price))
                         end
                         TriggerClientEvent('atomic_vehicleshop:client:spawnVehicle', src, model, xPlayer.getIdentifier())
-                        TriggerClientEvent('quantum_notify:client:sendNotification', src, 'xx', 'Du hast das Fahrzeug erfolgreich gekauft.', 'xx')
+                        xPlayer.showNotification('Youve bought that vehicle.')
                     else
-                        TriggerClientEvent('quantum_notify:client:sendNotification', src, 'xx', 'Du hast nicht genügend Geld dabei, um das Fahrzeug zu kaufen.', 'xx')
+                        xPlayer.showNotification('You do not have enough money to buy that vehicle.')
                     end
                 end
             end
