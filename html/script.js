@@ -7,7 +7,7 @@ window.addEventListener('message', function(event) {
             $('.vehicleList').append(`
             <div class="vehicleItem">
                 <div class="vehicleItemImage">
-                    <img src="nui://atomic_vehicleshop/html/assets/${vehicles[i].model}.jpg" alt="">
+                    <img src="nui://oakyVehicleshop/html/assets/${vehicles[i].model}.jpg" alt="">
                 </div>
                 <div class="vehicleItemName">${vehicles[i].name}</div>
                 <div class="vehicleItemPrice">${new Intl.NumberFormat("en-US", { type: "currency", currency: "USD" }).format(vehicles[i].price)}</div>
