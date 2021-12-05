@@ -71,12 +71,14 @@ function isValidModel(model)
 end
 
 ESX.RegisterServerCallback('atomic_vehicleshop:server:getVehicles', function(source, cb, type)
-    currentType = type
     if type == 'car' then
+        currentType = 'vehicles'
         cb(vehicleList)
     elseif type == 'truck' then
+        currentType = 'trucks'
         cb(truckList)
     elseif type == 'air' then
+        currentType = 'aircrafts'
         cb(airList)
     end
 end)
@@ -86,55 +88,21 @@ AddEventHandler('atomic_vehicleshop:server:searchVehicle', function(name, catego
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
     local name = tostring(name)
-    
-    if category == 'all' and name ~= '' then
-        MySQL.Async.fetchAll('SELECT * FROM vehicles WHERE name LIKE "%' .. name .. '%"', {
-            ['@category'] = category
-        }, function(result)
-            local vehicles = {}
-            for i = 1, #result do
-                vehicles[#vehicles + 1] = {
-                    name = result[i].name,
-                    model = result[i].model,
-                    price = result[i].price,
-                    category = result[i].category
-                }
-            end
-            TriggerClientEvent('atomic_vehicleshop:client:setVehicleResults', src, vehicles)
-        end)
-    elseif name ~= '' and category ~= 'all' then
-        MySQL.Async.fetchAll('SELECT * FROM vehicles WHERE name LIKE "%' .. name .. '%" AND category = @category', {
-            ['@category'] = category
-        }, function(result)
-            local vehicles = {}
-            for i = 1, #result do
-                vehicles[#vehicles + 1] = {
-                    name = result[i].name,
-                    model = result[i].model,
-                    price = result[i].price,
-                    category = result[i].category
-                }
-            end
-            TriggerClientEvent('atomic_vehicleshop:client:setVehicleResults', src, vehicles)
-        end)
-    elseif category ~= 'all' and name == '' then
-        MySQL.Async.fetchAll('SELECT * FROM vehicles WHERE category = @category', {
-            ['@category'] = category
-        }, function(result)
-            local vehicles = {}
-            for i = 1, #result do
-                vehicles[#vehicles + 1] = {
-                    name = result[i].name,
-                    model = result[i].model,
-                    price = result[i].price,
-                    category = result[i].category
-                }
-            end
-            TriggerClientEvent('atomic_vehicleshop:client:setVehicleResults', src, vehicles)
-        end)
-    elseif category == 'all' and name == '' then
-        TriggerClientEvent('atomic_vehicleshop:client:setVehicleResults', src, vehicleList)
-    end
+
+    MySQL.Async.fetchAll('SELECT * FROM '..currentType..' WHERE name LIKE "%' .. name .. '%"', {
+        ['@category'] = category
+    }, function(result)
+        local vehicles = {}
+        for i = 1, #result do
+            vehicles[#vehicles + 1] = {
+                name = result[i].name,
+                model = result[i].model,
+                price = result[i].price,
+                category = result[i].category
+            }
+        end
+        TriggerClientEvent('atomic_vehicleshop:client:setVehicleResults', src, vehicles)
+    end)
 end)
 
 RegisterServerEvent('atomic_vehicleshop:server:buyVehicle')
