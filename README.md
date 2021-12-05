@@ -28,6 +28,9 @@ There are several ways how you can do this. One of these ways is the following:<
  end
 </code>
 
+## Can you convert this to a other framework?
+Lets say... No. Do it yourself. Its not a big script.
+
 ## Support
 If you encountered any issues with the script either open a issue ticket or create a ticket on my discord. We are happy to help you to resolve this issue!
 Discord: https://dsc.gg/oaky
