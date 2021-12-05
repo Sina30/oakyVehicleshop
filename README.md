@@ -11,6 +11,13 @@ This resource is based on the esx framework and works with ESX 1.2 & legacy. The
 3. Restart your server or refresh your resources.
 4. Setup the config
 
+# Features
+* Add as many vehicle shops as you want
+* Clean & Unique UI Design
+* Sell your vehicles you've bought from one of your shops
+* Search for vehicles
+* Percentage from the original price if you sell your vehicle
+
 # FAQ
 ## How to change the price the player gets back when he sells the vehicle?
 Open <code>server.lua</code> go to line <code>257</code> and change <b>0.40</b> to the value of your choice.
