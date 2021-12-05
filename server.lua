@@ -214,7 +214,7 @@ AddEventHandler('atomic_vehicleshop:server:checkOwnerForSell', function(plate)
                 end
             end
             if not found then
-                TriggerClientEvent('quantum_notify:client:sendNotification', src, 'xx', 'Du kannst hier nur Fahrzeuge verkaufen, die du beim normalen Autohändler erwerben kannst.')
+                xPlayer.showNotification('You can only sell vehicles here which you can buy on the default vehicle shop.')
             else
                 MySQL.Async.execute('DELETE FROM owned_vehicles WHERE plate = @plate', {
                     ['@plate'] = plate
@@ -222,11 +222,11 @@ AddEventHandler('atomic_vehicleshop:server:checkOwnerForSell', function(plate)
                 local price = tonumber(price) * 0.40
                 xPlayer.addMoney(price)
                 
-                TriggerClientEvent('quantum_notify:client:sendNotification', src, 'xx', 'Du hast $'..price..' für dein Fahrzeug erhalten.')
+                xPlayer.showNotification('Youve got $'..price..' for your vehicle.')
                 TriggerClientEvent('atomic_vehicleshop:client:deleteVehicle', src)
             end
         else
-            TriggerClientEvent('quantum_notify:client:sendNotification', src, 'xx', 'Du kannst kein Fahrzeug verkaufen, welches nicht dir gehört.')
+            xPlayer.showNotification('You cant sell a vehicle which you dont own.')
         end
     end)
 end)
