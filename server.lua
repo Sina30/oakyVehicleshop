@@ -71,15 +71,13 @@ function isValidModel(model)
 end
 
 ESX.RegisterServerCallback('atomic_vehicleshop:server:getVehicles', function(source, cb, type)
+    currentType = type
     if type == 'car' then
-        currentType = 'car'
         cb(vehicleList)
     elseif type == 'truck' then
-        currentType = 'car'
         cb(truckList)
     elseif type == 'air' then
         cb(airList)
-        currentType = 'air'
     end
 end)
 
