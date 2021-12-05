@@ -184,12 +184,11 @@ end)
 
 RegisterServerEvent('atomic_vehicleshop:server:assignVehicleToPlayer')
 AddEventHandler('atomic_vehicleshop:server:assignVehicleToPlayer', function(plate, prop, owner)
-    MySQL.Async.execute('INSERT INTO owned_vehicles (owner, plate, vehicle, garage_type, in_garage) VALUES (@owner, @plate, @vehicle, @garage_type, @in_garage)', {
+    MySQL.Async.execute('INSERT INTO owned_vehicles (owner, plate, vehicle, stored) VALUES (@owner, @plate, @vehicle, @stored)', {
         ['@owner'] = owner,
         ['@plate'] = plate,
         ['@vehicle'] = json.encode(prop),
-        ['@garage_type'] = currentType,
-        ['@in_garage'] = true
+        ['@stored'] = false
     })
 end)
 
